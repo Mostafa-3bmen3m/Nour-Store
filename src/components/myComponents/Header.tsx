@@ -2,11 +2,13 @@
 
 import { ThemeType } from '@/constants/types'
 import { useLocalStorageState } from 'ahooks'
-import { Moon, Palette, Sun } from 'lucide-react'
+import { Moon, Palette, Sun, LogIn } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 const Header = () => {
-  const [theme, setTheme] = useLocalStorageState<ThemeType>('theme' , {defaultValue : 'light'})
+  const [theme, setTheme] = useLocalStorageState<ThemeType>('theme', { defaultValue: 'light' })
 
   useEffect(() => {
     if (theme === 'dark' || theme === 'colorful') {
@@ -26,39 +28,48 @@ const Header = () => {
   }, [theme])
 
   return (
-    <div className='fixed top-0 left-0 right-0 flex justify-between p-5'>
+    <header className='fixed top-0 left-0 right-0 flex justify-between items-center p-4 z-50 bg-background/80 backdrop-blur-md border-b border-border/40 transition-all'>
       <div>
-        <h1 className='text-black dark:text-white text-3xl'>Kids Store</h1>
+        <h1 className='text-foreground text-3xl font-bold tracking-tight'>Kids Store</h1>
       </div>
-      <div className='flex'>
-        <button
-          aria-label='Light mode'
-          className='group relative p-3 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
-          onClick={() => setTheme('light')}
-        >
-          <Sun className='w-5 h-5 text-yellow-500 group-hover:text-yellow-600 transition-colors' />
-          <span className='sr-only'>Light Mode</span>
-        </button>
+      <div className='flex items-center gap-4'>
+        <Button asChild variant="ghost" className="text-foreground hover:text-primary transition-colors">
+          <Link href="/auth/login" className="flex items-center gap-2">
+            <LogIn className="w-4 h-4" />
+            Login
+          </Link>
+        </Button>
 
-        <button
-          aria-label='Dark mode'
-          className='group relative p-3 rounded-xl bg-gray-900 border border-gray-700 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900'
-          onClick={() => setTheme('dark')}
-        >
-          <Moon className='w-5 h-5 text-indigo-400 group-hover:text-indigo-300 transition-colors' />
-          <span className='sr-only'>Dark Mode</span>
-        </button>
+        <div className="flex gap-2">
+          <button
+            aria-label='Light mode'
+            className='group relative p-2 rounded-xl bg-background border border-border/50 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/50'
+            onClick={() => setTheme('light')}
+          >
+            <Sun className='w-5 h-5 text-yellow-500 group-hover:text-yellow-600 transition-colors' />
+            <span className='sr-only'>Light Mode</span>
+          </button>
 
-        <button
-          aria-label='Colorful mode'
-          className='group relative p-3 rounded-xl bg-linear-to-br from-pink-500 via-purple-500 to-indigo-500 shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2'
-          onClick={() => setTheme('colorful')}
-        >
-          <Palette className='w-5 h-5 text-white drop-shadow-sm group-hover:drop-shadow-md transition-all' />
-          <span className='sr-only'>Colorful Mode</span>
-        </button>
+          <button
+            aria-label='Dark mode'
+            className='group relative p-2 rounded-xl bg-background border border-border/50 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/50'
+            onClick={() => setTheme('dark')}
+          >
+            <Moon className='w-5 h-5 text-indigo-400 group-hover:text-indigo-300 transition-colors' />
+            <span className='sr-only'>Dark Mode</span>
+          </button>
+
+          <button
+            aria-label='Colorful mode'
+            className='group relative p-2 rounded-xl bg-linear-to-br from-pink-500 via-purple-500 to-indigo-500 shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2'
+            onClick={() => setTheme('colorful')}
+          >
+            <Palette className='w-5 h-5 text-white drop-shadow-sm group-hover:drop-shadow-md transition-all' />
+            <span className='sr-only'>Colorful Mode</span>
+          </button>
+        </div>
       </div>
-    </div>
+    </header>
   )
 }
 

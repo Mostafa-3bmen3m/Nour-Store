@@ -116,15 +116,15 @@
 .colorful {
   --background: oklch(0.96 0.07 260);
   /* soft lavender-blue */
-  --foreground: oklch(0.20 0.08 260);
+  --foreground: oklch(0.15 0.08 260);
   /* deep indigo (readable) */
 
   --card: oklch(0.94 0.09 280);
   /* light periwinkle */
-  --card-foreground: oklch(0.22 0.09 260);
+  --card-foreground: oklch(0.15 0.09 260);
 
   --popover: oklch(0.94 0.09 280);
-  --popover-foreground: oklch(0.22 0.09 260);
+  --popover-foreground: oklch(0.15 0.09 260);
 
   --primary: oklch(0.78 0.24 290);
   /* vivid magenta */
@@ -133,14 +133,14 @@
 
   --secondary: oklch(0.82 0.18 150);
   /* fresh lime-teal */
-  --secondary-foreground: oklch(0.18 0.08 260);
+  --secondary-foreground: oklch(0.15 0.08 260);
 
   --muted: oklch(0.88 0.06 260);
-  --muted-foreground: oklch(0.50 0.08 260);
+  --muted-foreground: oklch(0.40 0.08 260);
 
   --accent: oklch(0.80 0.22 70);
   /* sunny orange */
-  --accent-foreground: oklch(0.18 0.08 260);
+  --accent-foreground: oklch(0.15 0.08 260);
 
   --destructive: oklch(0.68 0.28 25);
   /* fiery red-orange */
